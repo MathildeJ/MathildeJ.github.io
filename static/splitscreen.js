@@ -14,7 +14,7 @@ function navigate() {
 
 // exit session function
 function exitSession() {
-    sess.end('');
+    sess.end('https://mathildej.github.io');
 }
 
 //update live feed
@@ -83,6 +83,7 @@ function back_button() {
     if (urls.indexOf(lastUrl) > 2) {
         index = urls.indexOf(lastUrl);
     }
+    // go back to previous page if it exists (otherwise go back to start page)
     sess.relocate(urls[index - 1]);
 }
 
@@ -92,6 +93,8 @@ window.addEventListener('message', function(e) {
     if (origin === "https://surfly.com") {
         var string = JSON.stringify(e.data);
         if (string.indexOf('cobro_event')) {
+	    // two messages are being sent with different formats, one of them being deprecated
+            // therefore, we need to make sure we get the right one (indicated by 'filter messages' comments)
 
             // the 2nd follower link
             if (string.match(/[0-9]{3}[-][0-9]{3}[-][0-9]{3}/)) {
@@ -99,6 +102,7 @@ window.addEventListener('message', function(e) {
                 var index = string.indexOf('https');
                 var indexEnd = string.indexOf('origin');
                 var flink = string.substring(index, indexEnd - 4);
+		// filter messages
                 if (flink.indexOf('\\')) {
                     flink = flink.substring(0, flink.length);
                 };
@@ -111,6 +115,7 @@ window.addEventListener('message', function(e) {
                 var index = string.indexOf('data');
                 var indexEnd = string.indexOf('origin');
                 var info = string.substring(index + 9, indexEnd - 5);
+		// filter messages
                 if (info.charAt(0) === 'T') {
                     if (info.indexOf('https') !== -1) {
                         var new_ph = info.substring(info.indexOf('https') + 8);
@@ -126,6 +131,7 @@ window.addEventListener('message', function(e) {
                 var index = string.indexOf('data');
                 var indexEnd = string.indexOf('origin');
                 var info = string.substring(index + 9, indexEnd - 5);
+		// filter messages
                 if (info.indexOf('!') !== -1) {
                     update_feed(info);
                 }
@@ -136,6 +142,7 @@ window.addEventListener('message', function(e) {
                 var index = string.indexOf('data');
                 var indexEnd = string.indexOf('origin');
                 var info = string.substring(index + 9, indexEnd - 5);
+		// filter messages
                 if (info.charAt(0) === 'C') {
                     var url = info.substring(info.indexOf('https'));
                     sess.relocate(url);
