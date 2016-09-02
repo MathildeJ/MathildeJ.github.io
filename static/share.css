@@ -1,0 +1,14 @@
+body {
+    background-image: url('./ride.jpg');
+    background-size: cover;
+}
+
+.mainText {
+    color: white;
+}
+
+input {
+    color: #78ceea;
+}
+
+
