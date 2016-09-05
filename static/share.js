@@ -32,13 +32,4 @@ $(document).ready(function() {
         $("#mail_link").attr("href", "mailto:" + address + "?subject=Invitation%20to%20splitscreen%20session&body=You%20have%20been%20invited%20to%20a%20splitscreen%20session!%0D%0AOpen " + inviteLink + "%20to%20join%20");
     });
 
-    // submit when enter key is pressed
-    $('#enterEmail').keypress(function(e) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            $('#mail').click();
-        }
-    });
-
-
 });
