@@ -123,6 +123,7 @@ img {
     background: transparent;
     border: none;
     background-size: cover;
+    cursor: pointer;
 }
 
 #badReaction {
