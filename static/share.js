@@ -29,7 +29,7 @@ $(document).ready(function() {
         // get text input from the input
         var address = document.getElementById('enterEmail').value;
         var inviteLink = document.getElementById('inviteLink').value;
-        $("#mail_link").attr("href", "mailto:" + address + "?subject=Invitation%20to%20splitscreen%20session&body=You%20have%20been%20invited%20to%20a%20splitscreen%20session!%0D%0AClick <a>" + inviteLink + "</a>%20to%20join%20");
+        $("#mail_link").attr("href", "mailto:" + address + "?subject=Invitation%20to%20splitscreen%20session&body=You%20have%20been%20invited%20to%20a%20splitscreen%20session!%0D%0AOpen " + inviteLink + "%20to%20join%20");
     });
 
 
